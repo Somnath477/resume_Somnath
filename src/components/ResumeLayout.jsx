@@ -34,7 +34,7 @@ export default function ResumeLayout() {
 <div className="mt-6 flex gap-4">
   {/* LinkedIn */}
   <a
-    href="https://www.linkedin.com/in/somnath-chakraborty245497176/"
+    href="https://www.linkedin.com/in/somnath-chakraborty-245497176/"
     target="_blank"
     aria-label="LinkedIn"
     className="glass-soft p-3 rounded-full hover:scale-110 transition"
