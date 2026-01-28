@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* ===============================
+   DESIGN TOKENS
+   =============================== */
+
+:root {
+  --bg-dark: black;
+  --panel-dark: rgba(15, 18, 35, 0.78);
+;
+
+  --grad-start: #1e3a8a;
+  --grad-mid: #5b21b6;
+  --grad-end: #9f1239;
+
+  --radius-xl: 22px;
+  --shadow-glow: 0 20px 60px rgba(0,0,0,.7);
+}
+
+html, body {
+  background: var(--bg-dark);
+  color: #e5e7eb;
+}
+
+/* ===============================
+   THEME VARIANTS
+   =============================== */
+
+html[data-theme="ocean"] {
+  --grad-start: #0ea5e9;
+  --grad-mid: #2563eb;
+  --grad-end: #1e40af;
+}
+
+html[data-theme="emerald"] {
+  --grad-start: #10b981;
+  --grad-mid: #047857;
+  --grad-end: #064e3b;
+}
+
+html[data-theme="sunset"] {
+  --grad-start: #f97316;
+  --grad-mid: #db2777;
+  --grad-end: #7c2d12;
+}
+
+/* ===============================
+   UTILITIES
+   =============================== */
+
+.bg-bgDark { background: var(--bg-dark); }
+.bg-panelDark { background: var(--panel-dark); }
+
+.bg-premiumGradient {
+  background: linear-gradient(
+    135deg,
+    var(--grad-start),
+    var(--grad-mid),
+    var(--grad-end)
+  );
+}
+
+.rounded-xl2 { border-radius: var(--radius-xl); }
+.shadow-softGlow { box-shadow: var(--shadow-glow); }
+
+/* ===============================
+   GLASS
+   =============================== */
+
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.18),
+    rgba(255,255,255,.06)
+  );
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+.glass-soft {
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+/* ===============================
+   GLOW
+   =============================== */
+
+@keyframes gradientShift {
+  0% { transform: translate(-10%, -10%) scale(1); }
+  50% { transform: translate(10%, 10%) scale(1.1); }
+  100% { transform: translate(-10%, -10%) scale(1); }
+}
+
+.gradient-glow {
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    135deg,
+    var(--grad-start),
+    var(--grad-mid),
+    var(--grad-end)
+  );
+  filter: blur(120px);
+  opacity: .35;
+  animation: gradientShift 14s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* ===============================
+   NOISE
+   =============================== */
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===============================
+   MICRO MOTION
+   =============================== */
+
+.motion-card {
+  transition: transform .4s cubic-bezier(.22,1,.36,1),
+              box-shadow .4s cubic-bezier(.22,1,.36,1);
+}
+
+.motion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 80px rgba(0,0,0,.65);
+}
+
+.motion-photo {
+  transition: transform .5s cubic-bezier(.22,1,.36,1);
+}
+
+.motion-photo:hover {
+  transform: translateY(-6px) scale(1.015);
+}
+
+/* ===============================
+   BACKGROUND EFFECTS
+   =============================== */
+
+.bg-effects {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(600px 400px at 10% 15%, rgba(99,102,241,0.55), transparent 70%),
+    radial-gradient(500px 350px at 90% 20%, rgba(236,72,153,0.45), transparent 70%),
+    radial-gradient(450px 300px at 50% 85%, rgba(14,165,233,0.45), transparent 70%),
+    linear-gradient(180deg, #0b1020 0%, #060814 100%);
+}
+
+.bg-effects::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.75) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+
+.bg-effects::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
+  opacity: .15;
+}
