@@ -105,7 +105,7 @@ export default function ResumeLayout() {
 
               <Section title="Projects">
                 <div className="grid grid-cols-2 gap-3">
-                  <ProjectCard title="E-Commerce Platform" link="#" />
+                  <ProjectCard title="E-Commerce Platform" link="https://neo-store-ecommerce.vercel.app/" />
                   <ProjectCard title="Doctor Booking App" link="https://doctorsappointmentapp.netlify.app/" />
                   <ProjectCard title="Weather App" link="https://weatherapp2626.netlify.app/" />
                   <ProjectCard title="Todo App" link="https://todo-list477.vercel.app/" />
